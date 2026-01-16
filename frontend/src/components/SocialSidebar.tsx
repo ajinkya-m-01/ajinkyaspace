@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, MessageCircle, Github } from "lucide-react";
 import MagneticButton from "./MagneticButton";
+import SocialLinkPreview from "./SocialLinkPreview";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/ajinkya-mhetre01", label: "LinkedIn", tooltip: "💬 Let's Connect & Chat!" },
@@ -26,23 +27,20 @@ const SocialSidebar = () => {
       
       {socialLinks.map((social, index) => (
         <MagneticButton key={social.label} strength={0.5}>
-          <motion.a
-            href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block p-2 text-foreground/60 hover:text-foreground transition-colors duration-300 relative group"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 2 + index * 0.1 }}
-            aria-label={social.label}
-            title={social.tooltip}
           >
-            <social.icon className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.5} />
-            {/* Tooltip */}
-            <span className="absolute left-full ml-4 px-3 py-1.5 bg-foreground text-background text-xs whitespace-nowrap rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              {social.tooltip}
-            </span>
-          </motion.a>
+            <SocialLinkPreview
+              href={social.href}
+              label={social.label}
+              position="right"
+              className="block p-2 text-foreground/60 hover:text-foreground transition-colors duration-300 relative"
+            >
+              <social.icon className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.5} />
+            </SocialLinkPreview>
+          </motion.div>
         </MagneticButton>
       ))}
       

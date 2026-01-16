@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import MagneticButton from "./MagneticButton";
 import WordReveal from "./WordReveal";
+import SocialLinkPreview from "./SocialLinkPreview";
 import { Mail, Download, ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
@@ -241,15 +242,15 @@ const Footer = () => {
           
           <div className="flex items-center gap-6">
             {socials.map((link) => (
-              <a
+              <SocialLinkPreview
                 key={link.label}
                 href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-editorial-xs text-muted-foreground hover:text-foreground underline-animate transition-colors duration-300"
+                label={link.label}
               >
-                {link.label}
-              </a>
+                <span className="text-editorial-xs text-muted-foreground hover:text-foreground underline-animate transition-colors duration-300 cursor-pointer">
+                  {link.label}
+                </span>
+              </SocialLinkPreview>
             ))}
           </div>
           

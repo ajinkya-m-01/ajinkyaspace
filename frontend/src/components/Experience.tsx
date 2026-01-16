@@ -5,15 +5,15 @@ import HorizontalWipe from "./HorizontalWipe";
 
 const experiences = [
   {
-    role: "Software Developer",
-    company: "Atkind Pvt. Ltd.",
-    period: "2024 — Present",
-    description: "Building scalable web applications and contributing to product development with a focus on clean, maintainable code.",
+  role: "Technical Lead & Co-Founder",
+  company: "Atkind Pvt. Ltd.",
+  period: "2025 — Present",
+  description: "Leading technical architecture and development while co-founding the company, overseeing end-to-end product engineering, code quality, and delivery of scalable, production-ready web solutions."
   },
   {
     role: "Junior Product Developer Intern",
     company: "Vulnuris Security Solutions LLP",
-    period: "2023 — 2024",
+    period: "Nov 2025 — Jan 2026",
     description: "Developed security-focused products and gained hands-on experience with full-stack development practices.",
   },
 ];
