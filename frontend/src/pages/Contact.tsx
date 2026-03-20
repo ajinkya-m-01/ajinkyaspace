@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import PageTransition from "@/components/PageTransition";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -16,6 +17,10 @@ interface FormData {
   budgetRange?: string;
   expectedTimeline?: string;
 }
+
+const SERVICE_ID  = "service_ss9zalj";
+const TEMPLATE_ID = "template_c8zm9sd";
+const PUBLIC_KEY  = "HjAofPMvkMzHBHnrH";
 
 const Contact = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -34,6 +39,10 @@ const Contact = () => {
     message: string;
   }>({ type: null, message: "" });
 
+  useEffect(() => {
+    emailjs.init(PUBLIC_KEY);
+  }, []);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -49,41 +58,42 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
-    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
-
     try {
-      const response = await fetch(`${apiUrl}/api/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: formData.fullName,
+          fullName: formData.fullName,
+          email: formData.email,
+          enquiryType: formData.enquiryType,
+          message: formData.message,
+          projectType: formData.projectType || "N/A",
+          budgetRange: formData.budgetRange || "N/A",
+          expectedTimeline: formData.expectedTimeline || "N/A",
         },
-        body: JSON.stringify(formData)
+        {
+          publicKey: PUBLIC_KEY,
+        }
+      );
+
+      setSubmitStatus({
+        type: "success",
+        message: "Thank you! Your message has been sent successfully. I'll get back to you soon."
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSubmitStatus({
-          type: "success",
-          message: "Thank you! Your message has been sent successfully. I'll get back to you soon."
-        });
-        // Reset form
-        setFormData({
-          fullName: "",
-          email: "",
-          enquiryType: "General Enquiry",
-          message: "",
-          projectType: "",
-          budgetRange: "",
-          expectedTimeline: ""
-        });
-      } else {
-        throw new Error(data.message || "Failed to send message");
-      }
-    } catch (error) {
+      setFormData({
+        fullName: "",
+        email: "",
+        enquiryType: "General Enquiry",
+        message: "",
+        projectType: "",
+        budgetRange: "",
+        expectedTimeline: ""
+      });
+    } catch {
       setSubmitStatus({
         type: "error",
-        message: error instanceof Error ? error.message : "Failed to send message. Please try again."
+        message: "Failed to send message. Please try again."
       });
     } finally {
       setIsSubmitting(false);
@@ -242,11 +252,12 @@ const Contact = () => {
                       className="w-full px-4 py-3 bg-background border border-foreground/20 text-foreground focus:border-accent-lime focus:outline-none focus:ring-1 focus:ring-accent-lime transition-colors cursor-pointer"
                     >
                       <option value="">Select budget range</option>
-                      <option value="< $1,000">Less than $1,000</option>
+                      <option value="Under ₹10,000">Under ₹10,000</option>
+                      <option value="₹10,000 - ₹50,000">₹10,000 - ₹50,000</option>
+                      <option value="₹50,000 - ₹2,00,000">₹50,000 - ₹2,00,000</option>
+                      <option value="₹2,00,000+">₹2,00,000+</option>
                       <option value="$1,000 - $5,000">$1,000 - $5,000</option>
-                      <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-                      <option value="$10,000 - $25,000">$10,000 - $25,000</option>
-                      <option value="> $25,000">More than $25,000</option>
+                      <option value="$5,000+">$5,000+</option>
                     </select>
                   </div>
 
@@ -339,5 +350,4 @@ const Contact = () => {
     </PageTransition>
   );
 };
-
 export default Contact;
