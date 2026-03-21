@@ -9,7 +9,7 @@ dotenv.config();
 
 // Initialize Express app
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = Number(process.env.PORT) || 5001;
 
 // Middleware
 app.use(cors());
@@ -47,12 +47,28 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on http://localhost:${PORT}`);
-  console.log(`📊 API Health: http://localhost:${PORT}/api/health`);
-  console.log(`📦 Projects API: http://localhost:${PORT}/api/projects`);
-  console.log(`📧 Contact API: http://localhost:${PORT}/api/contact`);
-});
+// Start server with automatic port fallback if the preferred port is busy.
+const startServer = (port) => {
+  const server = app.listen(port, () => {
+    console.log(`🚀 Server is running on http://localhost:${port}`);
+    console.log(`📊 API Health: http://localhost:${port}/api/health`);
+    console.log(`📦 Projects API: http://localhost:${port}/api/projects`);
+    console.log(`📧 Contact API: http://localhost:${port}/api/contact`);
+  });
+
+  server.on('error', (error) => {
+    if (error.code === 'EADDRINUSE') {
+      const nextPort = port + 1;
+      console.warn(`⚠️ Port ${port} is already in use. Retrying on ${nextPort}...`);
+      startServer(nextPort);
+      return;
+    }
+
+    console.error('❌ Failed to start server:', error.message);
+    process.exit(1);
+  });
+};
+
+startServer(PORT);
 
 module.exports = app;

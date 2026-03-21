@@ -1,76 +1,22 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, Building2, ShoppingCart, GraduationCap, Brain, Gamepad2, Globe, Code } from "lucide-react";
 import WordReveal from "./WordReveal";
-import MagneticButton from "./MagneticButton";
 
-const projectCategories = [
-  {
-    name: "🌐 Corporate & Business",
-    icon: Building2,
-    projects: [
-      { title: "Aivors", category: "Corporate Website", url: "https://www.aivors.com/", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80" },
-      { title: "XAction", category: "Business Platform", url: "https://www.xaction.in/", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format&fit=crop&q=80" },
-      { title: "SRINC", category: "Corporate Website", url: "https://srinc.in", image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&auto=format&fit=crop&q=80" },
-      { title: "Rohum.tech", category: "Tech Business", url: "https://rohum.tech", image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop&q=80" },
-      { title: "Wristband", category: "Product Platform", url: "https://www.wristband.com/", image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=80" },
-      { title: "Sports Gear Swag", category: "E-commerce", url: "https://www.sportsgearswag.com/", image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&auto=format&fit=crop&q=80" },
-    ]
-  },
-  {
-    name: "🛒 E-commerce & Products",
-    icon: ShoppingCart,
-    projects: [
-      { title: "FairPlace", category: "E-commerce Platform", url: "https://fairplace.in", image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&auto=format&fit=crop&q=80" },
-      { title: "FairPlace Medical", category: "Medical E-commerce", url: "https://fairplace-med.netlify.app", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=80" },
-      { title: "Hotel 23K", category: "Hospitality Platform", url: "https://hotel23k.netlify.app", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop&q=80" },
-      { title: "Karigari Demo", category: "Product Showcase", url: "https://karigaridemo.netlify.app", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop&q=80" },
-    ]
-  },
-  {
-    name: "🎓 Education & Learning",
-    icon: GraduationCap,
-    projects: [
-      { title: "AI Learning Platform", category: "EdTech", url: "https://learningplatformofai.netlify.app/", image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=80" },
-      { title: "German Classes Portal", category: "Language Learning", url: "https://adityasirgermanclasses.netlify.app", image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&auto=format&fit=crop&q=80" },
-      { title: "DCE Educational Portal", category: "Education Platform", url: "https://dce2.netlify.app", image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&auto=format&fit=crop&q=80" },
-      { title: "CodePrep", category: "Interview Prep App", url: "#", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop&q=80", isMobileApp: true },
-    ]
-  },
-  {
-    name: "🤖 AI, Data & Tech",
-    icon: Brain,
-    projects: [
-      { title: "Data Visualization Tool", category: "Data Analytics", url: "https://visualizationtooldata.netlify.app/", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80" },
-      { title: "Today's AI", category: "AI Platform", url: "https://todaysai.netlify.app", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80" },
-      { title: "Astro Project", category: "Tech Innovation", url: "https://astroproject155.netlify.app", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80" },
-    ]
-  },
-  {
-    name: "🎮 Gaming & Entertainment",
-    icon: Gamepad2,
-    projects: [
-      { title: "WinWitty", category: "Gaming Platform", url: "#", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop&q=80", isMobileApp: true },
-      { title: "GameHub", category: "Multi-Game Platform", url: "#", image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop&q=80", isMobileApp: true },
-    ]
-  },
-  {
-    name: "🌍 Travel & Lifestyle",
-    icon: Globe,
-    projects: [
-      { title: "ExploreSphere", category: "Travel Platform", url: "https://exploresphere.netlify.app", image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&auto=format&fit=crop&q=80" },
-      { title: "AdiYogInGo", category: "Wellness Platform", url: "https://adiyogingo.netlify.app", image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&auto=format&fit=crop&q=80" },
-      { title: "LivelyK", category: "Lifestyle Platform", url: "https://livelyk.netlify.app", image: "https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800&auto=format&fit=crop&q=80" },
-    ]
-  },
-  {
-    name: "🧩 CMS & Demo Sites",
-    icon: Code,
-    projects: [
-      { title: "WordPress NA", category: "CMS Development", url: "https://wordpressna.netlify.app", image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&auto=format&fit=crop&q=80" },
-    ]
-  }
+const API_URL = import.meta.env.VITE_API_URL || "https://portfolio-master-l7rq.onrender.com";
+
+const categoryConfigs = [
+  { name: "Corporate & Business", icon: Building2 },
+  { name: "E-commerce & Products", icon: ShoppingCart },
+  { name: "Education & Learning", icon: GraduationCap },
+  { name: "AI Data & Tech", icon: Brain },
+  { name: "Gaming & Entertainment", icon: Gamepad2 },
+  { name: "Travel & Lifestyle", icon: Globe },
+  { name: "CMS & Demo Sites", icon: Code },
 ];
+
+const normalizeCategory = (categoryName: string) =>
+  categoryName.replace(/[^\w\s&]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
 
 interface ProjectCardProps {
   project: {
@@ -81,6 +27,17 @@ interface ProjectCardProps {
     isMobileApp?: boolean;
   };
   index: number;
+}
+
+type ApiProject = ProjectCardProps["project"] & {
+  _id: string;
+  status: string;
+};
+
+interface ProjectCategory {
+  name: string;
+  icon: typeof Building2;
+  projects: ProjectCardProps["project"][];
 }
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
@@ -204,6 +161,75 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
+  const [projectCategories, setProjectCategories] = useState<ProjectCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchProjects = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`${API_URL}/api/projects?status=active`);
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch projects");
+      }
+
+      const payload: { data?: ApiProject[] } = await response.json();
+      const projects = Array.isArray(payload.data) ? payload.data : [];
+
+      const normalizedCategoryLookup = new Map(
+        categoryConfigs.map((config) => [normalizeCategory(config.name), config])
+      );
+
+      const groupedProjects = projects.reduce<Record<string, ProjectCardProps["project"][]>>(
+        (acc, project) => {
+          const matchedCategory = normalizedCategoryLookup.get(normalizeCategory(project.category));
+
+          if (!matchedCategory) {
+            return acc;
+          }
+
+          if (!acc[matchedCategory.name]) {
+            acc[matchedCategory.name] = [];
+          }
+
+          acc[matchedCategory.name].push({
+            title: project.title,
+            category: project.category,
+            url: project.url,
+            image: project.image,
+            isMobileApp: project.isMobileApp,
+          });
+
+          return acc;
+        },
+        {}
+      );
+
+      const orderedCategories = categoryConfigs
+        .map((config) => ({
+          name: config.name,
+          icon: config.icon,
+          projects: groupedProjects[config.name] || [],
+        }))
+        .filter((category) => category.projects.length > 0);
+
+      setProjectCategories(orderedCategories);
+    } catch {
+      setProjectCategories([]);
+      setError("Unable to load projects right now. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const totalProjects = projectCategories.reduce((acc, category) => acc + category.projects.length, 0);
 
   return (
     <section className="py-20 md:py-32 section-padding bg-background">
@@ -230,12 +256,36 @@ const Projects = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            A collection of {projectCategories.reduce((acc, cat) => acc + cat.projects.length, 0)}+ projects across multiple domains
+            A collection of {totalProjects}+ projects across multiple domains
           </motion.p>
         </div>
 
+        {loading && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="project-card group relative overflow-hidden animate-pulse">
+                <div className="block relative aspect-[4/3] overflow-hidden rounded-lg bg-foreground/10" />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!loading && error && (
+          <div className="mb-12 text-center">
+            <p className="text-muted-foreground">{error}</p>
+            <button
+              onClick={fetchProjects}
+              className="mt-4 inline-flex items-center rounded-lg border border-accent-lime/40 px-5 py-2 text-sm text-foreground hover:bg-accent-lime/10 transition-colors"
+            >
+              Try Again
+            </button>
+          </div>
+        )}
+
         {/* Project Categories */}
-        {projectCategories.map((category, categoryIndex) => {
+        {!loading &&
+          !error &&
+          projectCategories.map((category, categoryIndex) => {
           const Icon = category.icon;
           return (
             <motion.div
@@ -298,7 +348,7 @@ const Projects = () => {
               )}
             </motion.div>
           );
-        })}
+          })}
       </div>
     </section>
   );
