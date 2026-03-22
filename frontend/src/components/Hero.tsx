@@ -192,6 +192,10 @@ const Hero = () => {
                     <motion.img
                       src={portraitImage}
                       alt="Ajinkya Mehetre"
+                      loading="eager"
+                      fetchpriority="high"
+                      width="728"
+                      height="728"
                       className="w-full h-auto grayscale contrast-110 hover:grayscale-[0.7] hover:contrast-[1.15] transition-all duration-700"
                     />
                   </motion.div>

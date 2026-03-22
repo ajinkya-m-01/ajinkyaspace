@@ -39,6 +39,8 @@ const About = () => {
           <img
             src={portraitSeated}
             alt="Ajinkya Mehetre"
+            loading="lazy"
+            decoding="async"
             className="w-full h-auto object-contain grayscale"
           />
           {/* Orange gradient overlay */}
