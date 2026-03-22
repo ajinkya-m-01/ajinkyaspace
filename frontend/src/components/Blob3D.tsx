@@ -32,13 +32,11 @@ const Blob3D = () => {
     <motion.div
       ref={ref}
       className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"
-      style={{
-        rotateX: smoothY,
+      style={{ willChange: "transform, opacity", rotateX: smoothY,
         rotateY: smoothX,
         rotate: smoothRotate,
         scale: smoothScale,
-        transformStyle: "preserve-3d",
-      }}
+        transformStyle: "preserve-3d", }}
     >
       {/* Iridescent blob effect using CSS */}
       <div className="absolute inset-0 rounded-full bg-gradient-conic from-pink-300 via-purple-300 to-cyan-300 opacity-80 blur-sm animate-spin-slow" 

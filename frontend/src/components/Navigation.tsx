@@ -58,11 +58,10 @@ const Navigation = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: -20, filter: "blur(10px)" },
+    hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
         duration: 0.6,
         ease: "easeOut" as const,
@@ -71,11 +70,10 @@ const Navigation = () => {
   };
 
   const logoVariants = {
-    hidden: { opacity: 0, scale: 0.8, filter: "blur(10px)" },
+    hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
       scale: 1,
-      filter: "blur(0px)",
       transition: {
         duration: 0.8,
         ease: "easeOut" as const,
@@ -95,7 +93,7 @@ const Navigation = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: isLoaded ? 0 : -100, opacity: isLoaded ? 1 : 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
-      >
+       style={{ willChange: "transform, opacity" }}>
         <nav className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="flex items-center justify-between h-20 md:h-24">
             
@@ -108,7 +106,7 @@ const Navigation = () => {
               whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleNavClick("/")}
-            >
+             style={{ willChange: "transform, opacity" }}>
               <img 
                 src={logoImage} 
                 alt="Ajinkya Mehetre" 
@@ -124,7 +122,7 @@ const Navigation = () => {
               variants={containerVariants}
               initial="hidden"
               animate={isLoaded ? "visible" : "hidden"}
-            >
+             style={{ willChange: "transform, opacity" }}>
               {navItems.map((item) => (
                 <motion.button
                   key={item.path}
@@ -136,7 +134,7 @@ const Navigation = () => {
                   }`}
                   variants={itemVariants}
                   whileHover={{ y: -2, transition: { duration: 0.2 } }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   {item.label}
                   <motion.span
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-accent-lime"
@@ -144,7 +142,7 @@ const Navigation = () => {
                     animate={{ width: isActive(item.path) ? "75%" : "0%" }}
                     whileHover={{ width: "75%" }}
                     transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  />
+                   style={{ willChange: "transform, opacity" }} />
                 </motion.button>
               ))}
               
@@ -155,7 +153,7 @@ const Navigation = () => {
                 variants={itemVariants}
                 whileHover={{ y: -2, scale: 1.05, transition: { duration: 0.3 } }}
                 whileTap={{ scale: 0.95 }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 Contact →
               </motion.button>
             </motion.div>
@@ -168,7 +166,7 @@ const Navigation = () => {
               animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0.8 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               whileTap={{ scale: 0.9 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               <AnimatePresence mode="wait">
                 {isMenuOpen ? (
                   <motion.div
@@ -177,7 +175,7 @@ const Navigation = () => {
                     animate={{ opacity: 1, rotate: 0 }}
                     exit={{ opacity: 0, rotate: 90 }}
                     transition={{ duration: 0.2 }}
-                  >
+                   style={{ willChange: "transform, opacity" }}>
                     <X className="w-6 h-6" />
                   </motion.div>
                 ) : (
@@ -187,7 +185,7 @@ const Navigation = () => {
                     animate={{ opacity: 1, rotate: 0 }}
                     exit={{ opacity: 0, rotate: -90 }}
                     transition={{ duration: 0.2 }}
-                  >
+                   style={{ willChange: "transform, opacity" }}>
                     <Menu className="w-6 h-6" />
                   </motion.div>
                 )}
@@ -206,7 +204,7 @@ const Navigation = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             <motion.div 
               className="flex flex-col items-center justify-center h-full gap-8 px-8"
               initial="hidden"
@@ -219,7 +217,7 @@ const Navigation = () => {
                   transition: { staggerChildren: 0.1, delayChildren: 0.1 },
                 },
               }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               {navItems.map((item) => (
                 <motion.button
                   key={item.path}
@@ -230,16 +228,15 @@ const Navigation = () => {
                       : "text-foreground hover:text-accent-lime"
                   }`}
                   variants={{
-                    hidden: { opacity: 0, x: -50, filter: "blur(10px)" },
+                    hidden: { opacity: 0, x: -50 },
                     visible: { 
                       opacity: 1, 
                       x: 0, 
-                      filter: "blur(0px)",
                       transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
                     },
                   }}
                   whileHover={{ x: 10, transition: { duration: 0.2 } }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   {item.label}
                 </motion.button>
               ))}
@@ -248,17 +245,16 @@ const Navigation = () => {
                 onClick={() => handleNavClick("/contact")}
                 className="mt-8 px-10 py-4 bg-accent-lime text-foreground text-xl font-semibold rounded-full shadow-xl"
                 variants={{
-                  hidden: { opacity: 0, scale: 0.8, filter: "blur(10px)" },
+                  hidden: { opacity: 0, scale: 0.8 },
                   visible: { 
                     opacity: 1, 
                     scale: 1, 
-                    filter: "blur(0px)",
                     transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
                   },
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 Contact →
               </motion.button>
             </motion.div>

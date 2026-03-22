@@ -23,7 +23,7 @@ const Contact = () => {
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Content */}
-          <motion.div style={{ y: textY }}>
+          <motion.div style={{ willChange: "transform, opacity", y: textY }}>
             <SectionTransition variant="slide-up">
               <p className="text-editorial-xs text-muted-foreground mb-6">
                 Contact
@@ -91,7 +91,7 @@ const Contact = () => {
                   className="inline-flex items-center gap-3 px-6 py-4 border border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300 group"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   <Download className="w-4 h-4 group-hover:animate-bounce" />
                   <span className="text-editorial-xs">Download Resume</span>
                 </motion.a>
@@ -102,7 +102,7 @@ const Contact = () => {
           {/* Image with scale animation */}
           <motion.div
             className="relative aspect-square overflow-hidden hidden md:block"
-            style={{ scale: imageScale }}
+            style={{ willChange: "transform, opacity", scale: imageScale }}
           >
             <HorizontalWipe direction="right" className="w-full h-full">
               <ParallaxImage

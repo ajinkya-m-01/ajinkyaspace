@@ -46,7 +46,7 @@ const SectionTransition = ({
     <motion.div
       ref={ref}
       className={className}
-      style={getMotionProps()}
+      style={{ ...(getMotionProps()), willChange: "transform, opacity" }}
     >
       {children}
     </motion.div>

@@ -23,7 +23,7 @@ const Works = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               My Portfolio
             </motion.p>
 
@@ -32,7 +32,7 @@ const Works = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               Selected Works
             </motion.h1>
 
@@ -41,7 +41,7 @@ const Works = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               A collection of projects that showcase my expertise in full-stack development, 
               UI/UX design, and innovative problem-solving.
             </motion.p>

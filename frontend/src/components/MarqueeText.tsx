@@ -36,7 +36,7 @@ const MarqueeText = ({
     <div ref={ref} className={`overflow-hidden py-4 md:py-8 ${className}`}>
       <motion.div 
         className="flex whitespace-nowrap"
-        style={{ x }}
+        style={{ willChange: "transform, opacity", x }}
       >
         {duplicatedTexts.map((text, index) => (
           <div key={index} className="flex items-center mx-4 md:mx-8">

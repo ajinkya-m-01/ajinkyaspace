@@ -45,11 +45,11 @@ const StaggerContainer = ({
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-    >
+     style={{ willChange: "transform, opacity" }}>
       {Children.map(children, (child) => {
         if (isValidElement(child)) {
           return (
-            <motion.div variants={itemVariants}>
+            <motion.div variants={itemVariants} style={{ willChange: "transform, opacity" }}>
               {child}
             </motion.div>
           );

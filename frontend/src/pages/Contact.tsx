@@ -118,7 +118,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               Get in Touch
             </motion.p>
 
@@ -127,7 +127,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               Let's Work Together
             </motion.h1>
 
@@ -136,7 +136,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               Have a project in mind or just want to say hello? Fill out the form below and I'll get back to you as soon as possible.
             </motion.p>
           </div>
@@ -151,7 +151,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               {/* Full Name */}
               <div>
                 <label htmlFor="fullName" className="block text-sm font-medium text-foreground/80 mb-2">
@@ -214,7 +214,7 @@ const Contact = () => {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   <h3 className="text-lg font-medium text-foreground mb-4">Project Details</h3>
 
                   {/* Project Type */}
@@ -312,7 +312,7 @@ const Contact = () => {
                       ? "bg-green-500/10 border border-green-500/30 text-green-500"
                       : "bg-red-500/10 border border-red-500/30 text-red-500"
                   }`}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   {submitStatus.message}
                 </motion.div>
               )}
@@ -324,14 +324,14 @@ const Contact = () => {
                 className="w-full px-8 py-4 bg-foreground text-background font-semibold text-lg rounded-full hover:bg-accent-lime hover:text-foreground transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                 whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 {isSubmitting ? (
                   <>
                     <motion.div
                       className="w-5 h-5 border-2 border-background/30 border-t-background rounded-full"
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    />
+                     style={{ willChange: "transform, opacity" }} />
                     Sending...
                   </>
                 ) : (

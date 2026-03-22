@@ -49,12 +49,12 @@ const ServiceItem = ({ service, index }: ServiceItemProps) => {
       transition={{ duration: 0.5, delay: index * 0.05 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-    >
+     style={{ willChange: "transform, opacity" }}>
       <motion.div
         className="relative py-8 md:py-10 border-t border-foreground/10 group cursor-pointer overflow-hidden"
         whileHover={{ x: 10 }}
         transition={{ duration: 0.3 }}
-      >
+       style={{ willChange: "transform, opacity" }}>
         {/* Service Name */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-foreground group-hover:text-accent-lime transition-colors duration-300 relative z-10">
           {service.name}
@@ -69,7 +69,7 @@ const ServiceItem = ({ service, index }: ServiceItemProps) => {
             opacity: isHovered ? 1 : 0
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          style={{ originY: 0 }}
+          style={{ willChange: "transform, opacity", originY: 0 }}
         />
 
         {/* Rotating Text Strip */}
@@ -81,7 +81,7 @@ const ServiceItem = ({ service, index }: ServiceItemProps) => {
             x: isHovered ? 0 : 20
           }}
           transition={{ duration: 0.4 }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           <motion.div
             className="flex flex-col gap-4 py-4"
             animate={isHovered ? {
@@ -94,7 +94,7 @@ const ServiceItem = ({ service, index }: ServiceItemProps) => {
               repeat: Infinity,
               ease: "linear"
             }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             {/* Duplicate tags for seamless loop */}
             {[...service.tags, ...service.tags, ...service.tags].map((tag, idx) => (
               <div
@@ -128,7 +128,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               What I Offer
             </motion.p>
 
@@ -137,7 +137,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               Services
             </motion.h1>
 
@@ -146,7 +146,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               Professional web development, mobile apps, and custom solutions for your business.
               Available for freelancing and contract-based projects.
             </motion.p>
@@ -174,7 +174,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               Ready to start your project?
             </motion.h2>
             
@@ -184,7 +184,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               Let's discuss your requirements and build something amazing together.
             </motion.p>
 
@@ -194,7 +194,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               <a
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-foreground text-background text-base font-semibold hover:bg-accent-lime hover:text-foreground transition-all duration-300"

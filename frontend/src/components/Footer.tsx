@@ -75,7 +75,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           GET IN TOUCH
         </motion.p>
         
@@ -90,7 +90,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           <MagneticButton>
             <a 
               href="mailto:ajinkyamehetre@email.com"
@@ -117,7 +117,7 @@ const Footer = () => {
       {/* Giant name with Robot */}
       <motion.div 
         className="text-center px-4 pb-8 relative"
-        style={{ scale: nameScale, opacity: nameOpacity }}
+        style={{ willChange: "transform, opacity", scale: nameScale, opacity: nameOpacity }}
       >
         <h2 className="text-giant text-foreground/5 font-megrim select-none relative">
           AJINKYA
@@ -127,20 +127,16 @@ const Footer = () => {
         <motion.div
           ref={robotRef}
           className="absolute left-[15%] sm:left-[17%] md:left-[18%] lg:left-[19%] -top-[10%] sm:-top-[12%] md:-top-[15%] lg:-top-[18%] pointer-events-none"
-          style={{
-            perspective: 1200,
-          }}
+          style={{ willChange: "transform, opacity", perspective: 1200, }}
           initial={{ opacity: 0, scale: 0, y: -50 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
         >
           <motion.div
-            style={{
-              rotateX: robotRotation.rotateX,
+            style={{ willChange: "transform, opacity", rotateX: robotRotation.rotateX,
               rotateY: robotRotation.rotateY,
-              transformStyle: 'preserve-3d',
-            }}
+              transformStyle: 'preserve-3d', }}
             transition={{
               type: "spring",
               stiffness: 120,
@@ -166,10 +162,8 @@ const Footer = () => {
                   className="absolute top-[25%] left-[22%] w-5 h-5 md:w-7 md:h-7 bg-white rounded-full shadow-lg"
                   animate={{ scale: [1, 0.9, 1] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ 
-                    boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 8px rgba(255,255,255,0.5)',
-                    transform: 'translateZ(5px)'
-                  }}
+                  style={{ willChange: "transform, opacity", boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 8px rgba(255,255,255,0.5)',
+                    transform: 'translateZ(5px)' }}
                 >
                   <div className="absolute top-1.5 left-1.5 w-2.5 h-2.5 md:w-3.5 md:h-3.5 bg-black rounded-full" />
                   <div className="absolute top-1 left-1 w-1.5 h-1.5 bg-white rounded-full opacity-60" />
@@ -178,10 +172,8 @@ const Footer = () => {
                   className="absolute top-[25%] right-[22%] w-5 h-5 md:w-7 md:h-7 bg-white rounded-full shadow-lg"
                   animate={{ scale: [1, 0.9, 1] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ 
-                    boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 8px rgba(255,255,255,0.5)',
-                    transform: 'translateZ(5px)'
-                  }}
+                  style={{ willChange: "transform, opacity", boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 8px rgba(255,255,255,0.5)',
+                    transform: 'translateZ(5px)' }}
                 >
                   <div className="absolute top-1.5 left-1.5 w-2.5 h-2.5 md:w-3.5 md:h-3.5 bg-black rounded-full" />
                   <div className="absolute top-1 left-1 w-1.5 h-1.5 bg-white rounded-full opacity-60" />
@@ -196,10 +188,8 @@ const Footer = () => {
                   className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 w-1.5 h-6 md:h-8 bg-gradient-to-t from-green-500 to-green-300"
                   animate={{ rotate: [-8, 8, -8] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ 
-                    transformStyle: 'preserve-3d',
-                    boxShadow: '0 0 10px rgba(163, 230, 53, 0.6)'
-                  }}
+                  style={{ willChange: "transform, opacity", transformStyle: 'preserve-3d',
+                    boxShadow: '0 0 10px rgba(163, 230, 53, 0.6)' }}
                 >
                   <motion.div 
                     className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 bg-accent-lime rounded-full"
@@ -208,7 +198,7 @@ const Footer = () => {
                       boxShadow: ['0 0 10px rgba(163, 230, 53, 0.8)', '0 0 20px rgba(163, 230, 53, 1)', '0 0 10px rgba(163, 230, 53, 0.8)']
                     }}
                     transition={{ duration: 1.5, repeat: Infinity }}
-                    style={{ transform: 'translateZ(8px)' }}
+                    style={{ willChange: "transform, opacity", transform: 'translateZ(8px)' }}
                   />
                 </motion.div>
               </div>
@@ -227,7 +217,7 @@ const Footer = () => {
               className="absolute inset-0"
               animate={{ y: [-3, 3, -3] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-            />
+             style={{ willChange: "transform, opacity" }} />
           </motion.div>
         </motion.div>
       </motion.div>

@@ -27,13 +27,13 @@ const PageTransition = ({ children }: PageTransitionProps) => {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             <motion.div
               className="w-px h-0 bg-foreground"
               initial={{ height: 0 }}
               animate={{ height: 60 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            />
+             style={{ willChange: "transform, opacity" }} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -43,7 +43,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      >
+       style={{ willChange: "transform, opacity" }}>
         {children}
       </motion.div>
     </>

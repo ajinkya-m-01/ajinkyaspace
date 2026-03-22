@@ -22,7 +22,7 @@ const InfiniteTicker = ({ className = "" }: InfiniteTickerProps) => {
       <motion.div 
         className="flex whitespace-nowrap animate-ticker"
         initial={{ x: 0 }}
-      >
+       style={{ willChange: "transform, opacity" }}>
         {items}
       </motion.div>
     </div>

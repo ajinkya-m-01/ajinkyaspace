@@ -38,7 +38,7 @@ const ExperienceTimeline = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             EXPERIENCE
           </motion.p>
           <WordReveal
@@ -66,7 +66,7 @@ const ExperienceTimeline = () => {
               strokeWidth="20"
               strokeLinecap="round"
               fill="none"
-              style={{ pathLength }}
+              style={{ willChange: "transform, opacity", pathLength }}
             />
           </svg>
 
@@ -80,7 +80,7 @@ const ExperienceTimeline = () => {
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ duration: 0.7, delay: index * 0.2 }}
                 viewport={{ once: true, margin: "-100px" }}
-                style={{ transformStyle: "preserve-3d", transformOrigin: "bottom" }}
+                style={{ willChange: "transform, opacity", transformStyle: "preserve-3d", transformOrigin: "bottom" }}
               >
                 {/* Dot on timeline */}
                 <motion.div
@@ -89,7 +89,7 @@ const ExperienceTimeline = () => {
                   whileInView={{ scale: 1 }}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.2 }}
                   viewport={{ once: true }}
-                />
+                 style={{ willChange: "transform, opacity" }} />
                 
                 <div className="timeline-3d">
                   <p className="text-editorial-xs text-muted-foreground mb-2">

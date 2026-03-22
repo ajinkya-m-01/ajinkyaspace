@@ -24,13 +24,13 @@ const About = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               <motion.p
                 className="text-xs md:text-sm uppercase tracking-wider text-accent-lime"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 Get to know me
               </motion.p>
 
@@ -39,7 +39,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 About Me
               </motion.h1>
 
@@ -48,7 +48,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 <p>
                   I'm Ajinkya — a Full Stack Developer crafting fast, scalable, and immersive 
                   digital experiences that merge creativity with engineering precision.
@@ -70,14 +70,14 @@ const About = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
                 <motion.div
                   className="relative overflow-hidden rounded-lg"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   <img
                     src={portraitImage}
                     alt="Ajinkya Mehetre"
@@ -91,13 +91,13 @@ const About = () => {
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.7, delay: 0.8 }}
-                />
+                 style={{ willChange: "transform, opacity" }} />
                 <motion.div
                   className="absolute -bottom-6 -left-6 w-16 h-16 bg-accent-lime/20 rounded-full blur-xl"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 1 }}
-                />
+                 style={{ willChange: "transform, opacity" }} />
               </div>
             </motion.div>
           </div>
@@ -112,7 +112,7 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               What I Do
             </motion.h2>
 
@@ -141,7 +141,7 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: item.delay }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   <h3 className="text-xl md:text-2xl font-medium text-background">{item.title}</h3>
                   <p className="text-background/70 leading-relaxed">{item.description}</p>
                 </motion.div>

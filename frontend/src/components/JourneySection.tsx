@@ -93,7 +93,7 @@ const TimelineStep = ({ step, index }: TimelineStepProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-    >
+     style={{ willChange: "transform, opacity" }}>
       {/* Timeline Line and Dot */}
       <div className="relative flex flex-col items-center flex-shrink-0">
         {/* Vertical Line */}
@@ -104,7 +104,7 @@ const TimelineStep = ({ step, index }: TimelineStepProps) => {
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
-            style={{ originY: 0 }}
+            style={{ willChange: "transform, opacity", originY: 0 }}
           />
         )}
         
@@ -113,7 +113,7 @@ const TimelineStep = ({ step, index }: TimelineStepProps) => {
           className="relative z-10 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-accent-lime/10 border-2 border-accent-lime rounded-full group-hover:bg-accent-lime/20 transition-colors duration-300"
           whileHover={{ scale: 1.1, rotate: 360 }}
           transition={{ duration: 0.5 }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           <Icon className="w-6 h-6 md:w-7 md:h-7 text-accent-lime" />
         </motion.div>
       </div>
@@ -122,7 +122,7 @@ const TimelineStep = ({ step, index }: TimelineStepProps) => {
       <motion.div
         className="group flex-1 bg-foreground/5 border border-foreground/10 p-6 md:p-8 hover:bg-foreground/10 hover:border-accent-lime/50 transition-all duration-300"
         whileHover={{ x: isEven ? 5 : -5, y: -5 }}
-      >
+       style={{ willChange: "transform, opacity" }}>
         {/* Phase Badge */}
         <motion.span
           className="inline-block px-3 py-1 text-xs font-medium uppercase tracking-wider bg-accent-lime/20 text-accent-lime border border-accent-lime/30 mb-4"
@@ -130,7 +130,7 @@ const TimelineStep = ({ step, index }: TimelineStepProps) => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           {step.phase}
         </motion.span>
 
@@ -141,7 +141,7 @@ const TimelineStep = ({ step, index }: TimelineStepProps) => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           {step.title}
         </motion.h3>
 
@@ -152,7 +152,7 @@ const TimelineStep = ({ step, index }: TimelineStepProps) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           {step.description}
         </motion.p>
 
@@ -163,7 +163,7 @@ const TimelineStep = ({ step, index }: TimelineStepProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           {step.technologies.map((tech, techIndex) => (
             <motion.span
               key={tech}
@@ -173,7 +173,7 @@ const TimelineStep = ({ step, index }: TimelineStepProps) => {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 + 0.6 + techIndex * 0.05 }}
               whileHover={{ scale: 1.05 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               {tech}
             </motion.span>
           ))}
@@ -195,7 +195,7 @@ const JourneySection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             My Journey
           </motion.p>
           
@@ -205,7 +205,7 @@ const JourneySection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             From Fundamentals to Production
           </motion.h2>
           
@@ -215,7 +215,7 @@ const JourneySection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             My evolution as a developer — from learning the basics to building real-world, 
             production-level applications.
           </motion.p>
@@ -235,7 +235,7 @@ const JourneySection = () => {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
-        />
+         style={{ willChange: "transform, opacity" }} />
       </div>
     </section>
   );

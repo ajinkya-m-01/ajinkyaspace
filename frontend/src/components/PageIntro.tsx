@@ -35,7 +35,7 @@ const PageIntro = ({ children }: PageIntroProps) => {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             {/* Animated logo/name reveal */}
             <div className="relative">
               {/* Decorative line */}
@@ -44,15 +44,15 @@ const PageIntro = ({ children }: PageIntroProps) => {
                 initial={{ width: 0, opacity: 0 }}
                 animate={{ width: 120, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              />
+               style={{ willChange: "transform, opacity" }} />
               
               {/* Name/Initial */}
               <motion.div
                 className="text-5xl md:text-7xl font-light tracking-tight"
-                initial={{ opacity: 0, y: 30, filter: "blur(20px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 <span className="text-accent-lime">A</span>
                 <span className="text-foreground/80">jinkya</span>
               </motion.div>
@@ -63,7 +63,7 @@ const PageIntro = ({ children }: PageIntroProps) => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 Full-stack Developer
               </motion.p>
 
@@ -73,7 +73,7 @@ const PageIntro = ({ children }: PageIntroProps) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 {[0, 1, 2].map((i) => (
                   <motion.div
                     key={i}
@@ -88,7 +88,7 @@ const PageIntro = ({ children }: PageIntroProps) => {
                       delay: i * 0.2,
                       ease: "easeInOut",
                     }}
-                  />
+                   style={{ willChange: "transform, opacity" }} />
                 ))}
               </motion.div>
             </div>
@@ -99,13 +99,13 @@ const PageIntro = ({ children }: PageIntroProps) => {
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-            />
+             style={{ willChange: "transform, opacity" }} />
             <motion.div
               className="absolute bottom-8 right-8 w-12 h-12 border-r-2 border-b-2 border-accent-lime/30"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-            />
+             style={{ willChange: "transform, opacity" }} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -115,7 +115,7 @@ const PageIntro = ({ children }: PageIntroProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: showContent ? 1 : 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-      >
+       style={{ willChange: "transform, opacity" }}>
         {children}
       </motion.div>
     </>

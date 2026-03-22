@@ -60,7 +60,7 @@ const TechCard = ({ item, index }: TechCardProps) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
       whileHover={{ y: -4 }}
-    >
+     style={{ willChange: "transform, opacity" }}>
       <div className="flex items-center gap-3">
         <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-accent-lime/10 border border-accent-lime/30 group-hover:bg-accent-lime/20 transition-colors duration-300">
           <Icon className="w-5 h-5 text-accent-lime" />
@@ -87,7 +87,7 @@ const StackSection = ({ title, categories, delay = 0 }: StackSectionProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-    >
+     style={{ willChange: "transform, opacity" }}>
       {/* Section Title */}
       <motion.h3
         className="text-2xl md:text-3xl font-light text-foreground border-l-4 border-accent-lime pl-4"
@@ -95,7 +95,7 @@ const StackSection = ({ title, categories, delay = 0 }: StackSectionProps) => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: delay + 0.1 }}
-      >
+       style={{ willChange: "transform, opacity" }}>
         {title}
       </motion.h3>
 
@@ -109,7 +109,7 @@ const StackSection = ({ title, categories, delay = 0 }: StackSectionProps) => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: delay + categoryIndex * 0.1 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               {category.title}
             </motion.h4>
             
@@ -141,7 +141,7 @@ const TechStack = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             Technology Expertise
           </motion.p>
           
@@ -151,7 +151,7 @@ const TechStack = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             Tech Stack
           </motion.h2>
           
@@ -161,7 +161,7 @@ const TechStack = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             Full-stack development expertise across modern JavaScript and enterprise Java ecosystems.
           </motion.p>
         </div>
@@ -188,7 +188,7 @@ const TechStack = () => {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.6 }}
-        />
+         style={{ willChange: "transform, opacity" }} />
       </div>
     </section>
   );

@@ -28,7 +28,7 @@ const IntroSection = () => {
       
       <motion.div 
         className="relative max-w-4xl mx-auto text-center"
-        style={{ y, opacity }}
+        style={{ willChange: "transform, opacity", y, opacity }}
       >
         <motion.h2
           className="text-2xl md:text-4xl lg:text-5xl font-light leading-relaxed mb-8 md:mb-12 italic"
@@ -36,7 +36,7 @@ const IntroSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           I'm Ajinkya — a Full Stack Developer crafting fast, scalable, and immersive digital experiences that merge creativity with engineering precision.
         </motion.h2>
         
@@ -46,7 +46,7 @@ const IntroSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           I specialize in developing web applications, AI-driven products, and interactive experiences using technologies like React, Node.js, and modern frameworks.
         </motion.p>
         
@@ -55,7 +55,7 @@ const IntroSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           <MagneticButton strength={0.3}>
             <a
               href="#about"

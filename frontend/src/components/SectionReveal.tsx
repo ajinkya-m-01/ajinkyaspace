@@ -47,7 +47,7 @@ const SectionReveal = ({
         delay,
         ease: [0.16, 1, 0.3, 1] // Custom easing for premium feel
       }}
-      style={enableParallax ? { y: parallaxY } : undefined}
+      style={enableParallax ? { willChange: "transform, opacity", y: parallaxY } : { willChange: "transform, opacity" }}
     >
       {children}
     </motion.div>

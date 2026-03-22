@@ -23,7 +23,7 @@ const CurvedLine = ({ className = "" }: CurvedLineProps) => {
         viewBox="0 0 1200 400"
         preserveAspectRatio="none"
         fill="none"
-        style={{ opacity }}
+        style={{ willChange: "transform, opacity", opacity }}
       >
         {/* Main curved path */}
         <motion.path
@@ -32,7 +32,7 @@ const CurvedLine = ({ className = "" }: CurvedLineProps) => {
           strokeWidth="20"
           strokeLinecap="round"
           fill="none"
-          style={{ pathLength }}
+          style={{ willChange: "transform, opacity", pathLength }}
         />
         
         {/* Vertical line from curve */}
@@ -43,7 +43,7 @@ const CurvedLine = ({ className = "" }: CurvedLineProps) => {
           y2="400"
           stroke="hsl(var(--accent-lime))"
           strokeWidth="4"
-          style={{ pathLength: useTransform(scrollYProgress, [0.4, 0.7], [0, 1]) }}
+          style={{ willChange: "transform, opacity", pathLength: useTransform(scrollYProgress, [0.4, 0.7], [0, 1]) }}
         />
         
         {/* Dot at end of vertical line */}
@@ -52,7 +52,7 @@ const CurvedLine = ({ className = "" }: CurvedLineProps) => {
           cy="400"
           r="8"
           fill="hsl(var(--foreground))"
-          style={{ opacity: useTransform(scrollYProgress, [0.6, 0.7], [0, 1]) }}
+          style={{ willChange: "transform, opacity", opacity: useTransform(scrollYProgress, [0.6, 0.7], [0, 1]) }}
         />
       </motion.svg>
     </div>

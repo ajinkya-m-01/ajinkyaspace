@@ -57,7 +57,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
     <motion.div
       ref={cardRef}
       className="project-card group relative overflow-hidden"
-      style={{ y, opacity }}
+      style={{ willChange: "transform, opacity", y, opacity }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 50 }}
@@ -70,7 +70,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         target={project.isMobileApp ? "_self" : "_blank"}
         rel="noopener noreferrer"
         className="block relative aspect-[4/3] overflow-hidden rounded-lg"
-        style={{ rotateX }}
+        style={{ willChange: "transform, opacity", rotateX }}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.4 }}
       >
@@ -81,7 +81,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             scale: isHovered ? 1.15 : 1,
           }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           <img
             src={project.image}
             alt={project.title}
@@ -98,7 +98,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.5 }}
-        />
+         style={{ willChange: "transform, opacity" }} />
         
         {/* Content */}
         <div className="absolute inset-0 p-6 flex flex-col justify-end">
@@ -106,7 +106,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             className="text-xs text-muted-foreground mb-2 tracking-wide uppercase"
             animate={{ x: isHovered ? 5 : 0 }}
             transition={{ duration: 0.3 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             {project.category}
           </motion.p>
           
@@ -114,7 +114,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             className="text-xl md:text-2xl font-light text-foreground mb-2"
             animate={{ x: isHovered ? 5 : 0 }}
             transition={{ duration: 0.3, delay: 0.05 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             {project.title}
           </motion.h3>
 
@@ -124,7 +124,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               📱 Mobile App
             </motion.span>
           )}
@@ -139,16 +139,14 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             rotate: isHovered ? 0 : -180
           }}
           transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           <ArrowUpRight className="w-5 h-5 text-accent-lime" />
         </motion.div>
 
         {/* Shine effect */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)",
-          }}
+          style={{ willChange: "transform, opacity", background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)", }}
           animate={{
             x: isHovered ? ["0%", "200%"] : "0%",
           }}
@@ -242,7 +240,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             SELECTED WORK
           </motion.p>
           <WordReveal
@@ -255,7 +253,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             A collection of {totalProjects}+ projects across multiple domains
           </motion.p>
         </div>
@@ -295,19 +293,19 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-            >
+             style={{ willChange: "transform, opacity" }}>
               {/* Category Header */}
               <motion.div 
                 className="flex items-center gap-4 mb-8 cursor-pointer group"
                 onClick={() => setActiveCategory(activeCategory === categoryIndex ? null : categoryIndex)}
                 whileHover={{ x: 10 }}
                 transition={{ duration: 0.3 }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 <motion.div
                   className="w-12 h-12 rounded-full bg-accent-lime/10 flex items-center justify-center"
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.5 }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   <Icon className="w-6 h-6 text-accent-lime" />
                 </motion.div>
                 <h3 className="text-2xl md:text-3xl font-light text-foreground group-hover:text-accent-lime transition-colors">
@@ -317,7 +315,7 @@ const Projects = () => {
                   className="ml-auto text-sm text-muted-foreground"
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   {category.projects.length} projects
                 </motion.div>
               </motion.div>
@@ -326,7 +324,7 @@ const Projects = () => {
               <motion.div
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                 layout
-              >
+               style={{ willChange: "transform, opacity" }}>
                 {category.projects.map((project, index) => (
                   <ProjectCard 
                     key={project.title} 
@@ -344,7 +342,7 @@ const Projects = () => {
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 0.2 }}
                   viewport={{ once: true }}
-                />
+                 style={{ willChange: "transform, opacity" }} />
               )}
             </motion.div>
           );

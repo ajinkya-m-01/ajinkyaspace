@@ -37,10 +37,8 @@ const HorizontalWipe = ({
     <motion.div
       ref={ref}
       className={className}
-      style={{ 
-        clipPath: direction === "left" ? clipPathLeft : clipPathRight,
-        opacity
-      }}
+      style={{ willChange: "transform, opacity", clipPath: direction === "left" ? clipPathLeft : clipPathRight,
+        opacity }}
     >
       {children}
     </motion.div>

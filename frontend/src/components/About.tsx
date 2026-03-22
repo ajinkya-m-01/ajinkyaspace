@@ -20,7 +20,7 @@ const About = () => {
       <div className="overflow-hidden py-8 md:py-16">
         <motion.div
           className="flex whitespace-nowrap"
-          style={{ x: useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]) }}
+          style={{ willChange: "transform, opacity", x: useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]) }}
         >
           {[...Array(4)].map((_, i) => (
             <span key={i} className="text-6xl md:text-8xl lg:text-[10rem] font-light tracking-tighter mx-4 md:mx-8">
@@ -34,7 +34,7 @@ const About = () => {
       <div className="relative w-full overflow-hidden">
         <motion.div
           className="relative"
-          style={{ y: imageY, scale: imageScale }}
+          style={{ willChange: "transform, opacity", y: imageY, scale: imageScale }}
         >
           <img
             src={portraitSeated}
@@ -55,7 +55,7 @@ const About = () => {
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-        />
+         style={{ willChange: "transform, opacity" }} />
       </div>
       
       {/* About text */}
@@ -67,7 +67,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             ABOUT ME
           </motion.p>
           <WordReveal

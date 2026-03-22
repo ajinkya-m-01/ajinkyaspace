@@ -38,7 +38,7 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-background overflow-hidden"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
+         style={{ willChange: "transform, opacity" }}>
           {/* Subtle background texture */}
           <div 
             className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -53,7 +53,7 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-lime/5 rounded-full blur-[150px]" />
           </motion.div>
 
@@ -63,13 +63,13 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-          />
+           style={{ willChange: "transform, opacity" }} />
           <motion.div
             className="absolute bottom-8 right-8 w-16 h-16 border-r border-b border-foreground/10"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-          />
+           style={{ willChange: "transform, opacity" }} />
 
           {/* Main content */}
           <div className="relative text-center">
@@ -79,7 +79,7 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: 100, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            />
+             style={{ willChange: "transform, opacity" }} />
 
             {/* Hello text */}
             <AnimatePresence mode="wait">
@@ -87,21 +87,21 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
                 <motion.h1
                   key="hello"
                   className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight text-foreground"
-                  initial={{ opacity: 0, y: 40, filter: "blur(20px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
                   transition={{ 
                     duration: 0.7, 
                     ease: [0.25, 0.46, 0.45, 0.94] 
                   }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   Hello
                   <motion.span
                     className="inline-block text-accent-lime"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4, duration: 0.3 }}
-                  >
+                   style={{ willChange: "transform, opacity" }}>
                     .
                   </motion.span>
                 </motion.h1>
@@ -115,13 +115,13 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   <motion.h1
                     className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight"
-                    initial={{ opacity: 0, y: 30, filter: "blur(15px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  >
+                   style={{ willChange: "transform, opacity" }}>
                     <span className="text-accent-lime">A</span>
                     <span className="text-foreground">jinkya</span>
                     <span className="text-foreground/60 ml-4">Mhetre</span>
@@ -132,7 +132,7 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  >
+                   style={{ willChange: "transform, opacity" }}>
                     Full-stack Developer
                   </motion.p>
 
@@ -142,7 +142,7 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
                     initial={{ width: 0 }}
                     animate={{ width: 200 }}
                     transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  />
+                   style={{ willChange: "transform, opacity" }} />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -153,7 +153,7 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: 80, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-            />
+             style={{ willChange: "transform, opacity" }} />
           </div>
 
           {/* Loading dots */}
@@ -162,7 +162,7 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             {[0, 1, 2].map((i) => (
               <motion.div
                 key={i}
@@ -177,7 +177,7 @@ const HelloIntro = ({ onComplete }: HelloIntroProps) => {
                   delay: i * 0.15,
                   ease: "easeInOut",
                 }}
-              />
+               style={{ willChange: "transform, opacity" }} />
             ))}
           </motion.div>
         </motion.div>

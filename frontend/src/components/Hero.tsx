@@ -57,7 +57,7 @@ const Hero = () => {
         {/* Ambient background glow - mouse reactive */}
         <motion.div
           className="absolute inset-0 pointer-events-none z-0"
-          style={{ x: smoothMouseX, y: smoothMouseY }}
+          style={{ willChange: "transform, opacity", x: smoothMouseX, y: smoothMouseY }}
         >
           <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-accent-lime/5 rounded-full blur-[150px]" />
           <div className="absolute bottom-1/3 left-1/3 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[120px]" />
@@ -71,7 +71,7 @@ const Hero = () => {
             {/* Left: Text content */}
             <motion.div 
               className="flex flex-col justify-center space-y-6 md:space-y-8 z-10 relative"
-              style={{ y: contentY, opacity: contentOpacity }}
+              style={{ willChange: "transform, opacity", y: contentY, opacity: contentOpacity }}
             >
               {/* Subtle vertical accent line */}
               <motion.div
@@ -79,17 +79,17 @@ const Hero = () => {
                 initial={{ scaleY: 0, opacity: 0 }}
                 animate={{ scaleY: 1, opacity: 1 }}
                 transition={{ duration: 1.5, delay: 0.8, ease: "easeOut" }}
-                style={{ originY: 0 }}
+                style={{ willChange: "transform, opacity", originY: 0 }}
               >
                 <div className="h-full w-full bg-gradient-to-b from-transparent via-accent-lime/30 to-transparent" />
               </motion.div>
 
               <motion.p
                 className="text-xs md:text-sm uppercase tracking-[0.2em] text-accent-lime font-medium"
-                initial={{ opacity: 0, y: 15, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 Hi! I'm Ajinkya
               </motion.p>
 
@@ -106,7 +106,7 @@ const Hero = () => {
                   initial={{ scaleX: 0, opacity: 0 }}
                   animate={{ scaleX: 1, opacity: 1 }}
                   transition={{ duration: 1.2, delay: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                />
+                 style={{ willChange: "transform, opacity" }} />
               </div>
               
               {/* Enhanced CTA button */}
@@ -114,7 +114,7 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
+               style={{ willChange: "transform, opacity" }}>
                 <Link 
                   to="/works"
                   className="group relative inline-flex items-center gap-3 px-7 md:px-9 py-3.5 md:py-4 bg-transparent border border-foreground/20 text-foreground transition-all duration-500 text-sm md:text-base overflow-hidden"
@@ -132,7 +132,7 @@ const Hero = () => {
                     viewBox="0 0 16 16" 
                     fill="none" 
                     className="relative z-10 transition-all duration-500 group-hover:text-background group-hover:translate-x-1"
-                  >
+                   style={{ willChange: "transform, opacity" }}>
                     <path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </motion.svg>
                 </Link>
@@ -142,11 +142,9 @@ const Hero = () => {
             {/* Right: Profile image with premium treatment */}
             <motion.div
               className="flex items-center justify-center lg:justify-end"
-              style={{ 
-                y: smoothImageY, 
+              style={{ willChange: "transform, opacity", y: smoothImageY, 
                 scale: smoothImageScale,
-                opacity: contentOpacity
-              }}
+                opacity: contentOpacity }}
             >
               <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
                 {/* Radial glow behind image */}
@@ -155,7 +153,7 @@ const Hero = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1.5, delay: 0.3 }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   <div className="absolute inset-[-20%] bg-gradient-radial from-accent-lime/10 via-orange-500/5 to-transparent rounded-full blur-3xl" />
                 </motion.div>
 
@@ -166,7 +164,7 @@ const Hero = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                   whileHover={{ scale: 1.02 }}
-                  style={{ transition: "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
+                  style={{ willChange: "transform, opacity", transition: "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
                 >
                   {/* Soft edge mask/gradient for blending */}
                   <div className="absolute inset-0 z-20 pointer-events-none">
@@ -188,7 +186,7 @@ const Hero = () => {
                       repeat: Infinity, 
                       ease: "easeInOut" 
                     }}
-                  >
+                   style={{ willChange: "transform, opacity" }}>
                     <motion.img
                       src={portraitImage}
                       alt="Ajinkya Mehetre"
@@ -197,7 +195,7 @@ const Hero = () => {
                       width="728"
                       height="728"
                       className="w-full h-auto grayscale contrast-110 hover:grayscale-[0.7] hover:contrast-[1.15] transition-all duration-700"
-                    />
+                     style={{ willChange: "transform, opacity" }} />
                   </motion.div>
                 </motion.div>
               
@@ -207,12 +205,12 @@ const Hero = () => {
                   initial={{ opacity: 0, scale: 0, rotate: -90 }}
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}
                   transition={{ duration: 1, delay: 1, ease: "easeOut" }}
-                >
+                 style={{ willChange: "transform, opacity" }}>
                   <motion.div
                     className="absolute inset-0 border border-accent-lime/20 rounded-full"
                     animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.2, 0.4] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  />
+                   style={{ willChange: "transform, opacity" }} />
                 </motion.div>
                 
                 <motion.div
@@ -220,7 +218,7 @@ const Hero = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0.3, 0.6, 0.3] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-                />
+                 style={{ willChange: "transform, opacity" }} />
 
                 {/* Additional floating accent */}
                 <motion.div
@@ -230,7 +228,7 @@ const Hero = () => {
                     opacity: [0.3, 0.8, 0.3]
                   }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                />
+                 style={{ willChange: "transform, opacity" }} />
               </div>
             </motion.div>
           </div>
@@ -242,14 +240,14 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.8 }}
-          style={{ opacity: contentOpacity }}
+          style={{ willChange: "transform, opacity", opacity: contentOpacity }}
         >
           {/* Mouse scroll indicator */}
           <motion.div
             className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center pt-2"
             animate={{ borderColor: ["rgba(255,255,255,0.2)", "rgba(255,255,255,0.4)", "rgba(255,255,255,0.2)"] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             <motion.div
               className="w-1 h-2 bg-accent-lime/80 rounded-full"
               animate={{ 
@@ -257,14 +255,14 @@ const Hero = () => {
                 opacity: [1, 0.3, 1]
               }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
+             style={{ willChange: "transform, opacity" }} />
           </motion.div>
           
           <motion.span 
             className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60 font-light"
             animate={{ opacity: [0.3, 0.7, 0.3] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
+           style={{ willChange: "transform, opacity" }}>
             scroll
           </motion.span>
         </motion.div>
