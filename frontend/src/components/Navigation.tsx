@@ -161,6 +161,7 @@ const Navigation = () => {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Open menu"
               className="md:hidden w-12 h-12 flex items-center justify-center rounded-full bg-foreground text-background z-50 shadow-lg"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0.8 }}
