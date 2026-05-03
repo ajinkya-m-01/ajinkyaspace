@@ -3,7 +3,8 @@ import HelloIntro from "@/components/HelloIntro";
 import Home from "./Home";
 
 const Index = () => {
-  const [showIntro, setShowIntro] = useState(true);
+  const alreadySeen = sessionStorage.getItem("introSeen");
+  const [showIntro, setShowIntro] = useState(!alreadySeen);
 
   if (showIntro) {
     return <HelloIntro onComplete={() => setShowIntro(false)} />;

@@ -21,8 +21,7 @@ const InfiniteTicker = ({ className = "" }: InfiniteTickerProps) => {
     <div className={`overflow-hidden py-8 md:py-12 border-y border-border/20 ${className}`}>
       <motion.div 
         className="flex whitespace-nowrap animate-ticker"
-        initial={{ x: 0 }}
-       style={{ willChange: "transform, opacity" }}>
+        initial={{ x: 0 }}>
         {items}
       </motion.div>
     </div>

@@ -47,14 +47,12 @@ const WordReveal = ({ text, className = "", delay = 0 }: WordRevealProps) => {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-     style={{ willChange: "transform, opacity" }}>
+      viewport={{ once: true, margin: "-50px" }}>
       {words.map((word, index) => (
         <motion.span
           key={index}
           className="inline-block mr-[0.25em]"
-          variants={child}
-         style={{ willChange: "transform, opacity" }}>
+          variants={child}>
           {word}
         </motion.span>
       ))}

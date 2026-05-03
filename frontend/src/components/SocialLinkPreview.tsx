@@ -288,8 +288,7 @@ const SocialLinkPreview = ({ href, label, children, className = "", position = "
                 : "bottom-full left-1/2 -translate-x-1/2 mb-3"
             }`}
             onMouseEnter={handleCardMouseEnter}
-            onMouseLeave={handleCardMouseLeave}
-           style={{ willChange: "transform, opacity" }}>
+            onMouseLeave={handleCardMouseLeave}>
             {/* Arrow pointer */}
             <div className={`absolute w-4 h-4 rotate-45 bg-background border-border/30 ${
               position === "right"

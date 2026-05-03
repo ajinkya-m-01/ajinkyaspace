@@ -32,7 +32,7 @@ const Blob3D = () => {
     <motion.div
       ref={ref}
       className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"
-      style={{ willChange: "transform, opacity", rotateX: smoothY,
+      style={{ rotateX: smoothY,
         rotateY: smoothX,
         rotate: smoothRotate,
         scale: smoothScale,

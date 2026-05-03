@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { ArrowUpRight, Building2, ShoppingCart, GraduationCap, Brain, Gamepad2, Globe, Code } from "lucide-react";
 import WordReveal from "./WordReveal";
 
@@ -41,36 +41,23 @@ interface ProjectCategory {
 }
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
-  const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
     <motion.div
-      ref={cardRef}
       className="project-card group relative overflow-hidden"
-      style={{ willChange: "transform, opacity", y, opacity }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.05 }}
-      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: index * 0.05 }}
+      viewport={{ once: true, amount: 0.1 }}
     >
       <motion.a 
         href={project.isMobileApp ? "#" : project.url} 
         target={project.isMobileApp ? "_self" : "_blank"}
         rel="noopener noreferrer"
         className="block relative aspect-[4/3] overflow-hidden rounded-lg"
-        style={{ willChange: "transform, opacity", rotateX }}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.4 }}
       >
@@ -80,11 +67,12 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           animate={{
             scale: isHovered ? 1.15 : 1,
           }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-         style={{ willChange: "transform, opacity" }}>
+          transition={{ duration: 0.6, ease: "easeOut" }}>
           <img
             src={project.image}
             alt={project.title}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
         </motion.div>
@@ -97,24 +85,21 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           className="absolute inset-0 bg-gradient-to-br from-accent-lime/20 via-orange-500/20 to-transparent"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.5 }}
-         style={{ willChange: "transform, opacity" }} />
+          transition={{ duration: 0.5 }}/>
         
         {/* Content */}
         <div className="absolute inset-0 p-6 flex flex-col justify-end">
           <motion.p
             className="text-xs text-muted-foreground mb-2 tracking-wide uppercase"
             animate={{ x: isHovered ? 5 : 0 }}
-            transition={{ duration: 0.3 }}
-           style={{ willChange: "transform, opacity" }}>
+            transition={{ duration: 0.3 }}>
             {project.category}
           </motion.p>
           
           <motion.h3
             className="text-xl md:text-2xl font-light text-foreground mb-2"
             animate={{ x: isHovered ? 5 : 0 }}
-            transition={{ duration: 0.3, delay: 0.05 }}
-           style={{ willChange: "transform, opacity" }}>
+            transition={{ duration: 0.3, delay: 0.05 }}>
             {project.title}
           </motion.h3>
 
@@ -123,8 +108,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               className="inline-flex items-center gap-1 text-xs text-accent-lime"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-             style={{ willChange: "transform, opacity" }}>
+              transition={{ duration: 0.3 }}>
               📱 Mobile App
             </motion.span>
           )}
@@ -138,15 +122,14 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             scale: isHovered ? 1 : 0,
             rotate: isHovered ? 0 : -180
           }}
-          transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
-         style={{ willChange: "transform, opacity" }}>
+          transition={{ duration: 0.4, type: "spring", stiffness: 200 }}>
           <ArrowUpRight className="w-5 h-5 text-accent-lime" />
         </motion.div>
 
         {/* Shine effect */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
-          style={{ willChange: "transform, opacity", background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)", }}
+          style={{ background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)", }}
           animate={{
             x: isHovered ? ["0%", "200%"] : "0%",
           }}
@@ -239,8 +222,7 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-           style={{ willChange: "transform, opacity" }}>
+            viewport={{ once: true }}>
             SELECTED WORK
           </motion.p>
           <WordReveal
@@ -252,17 +234,55 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-           style={{ willChange: "transform, opacity" }}>
+            viewport={{ once: true }}>
             A collection of {totalProjects}+ projects across multiple domains
           </motion.p>
         </div>
 
         {loading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className="project-card group relative overflow-hidden animate-pulse">
-                <div className="block relative aspect-[4/3] overflow-hidden rounded-lg bg-foreground/10" />
+          <div>
+          <div className="topbar-loader"><div className="topbar-loader-bar" /></div>
+            <style>{`
+              @keyframes shimmer {
+                0% { background-position: -700px 0; }
+                100% { background-position: 700px 0; }
+              }
+              .skeleton-shimmer {
+                background: linear-gradient(
+                  90deg,
+                  rgba(255,255,255,0.03) 0%,
+                  rgba(255,255,255,0.08) 40%,
+                  rgba(255,255,255,0.03) 80%
+                );
+                background-size: 700px 100%;
+                animation: shimmer 1.6s infinite linear;
+              }
+            `}</style>
+            {[0,1,2].map((cat) => (
+              <div key={cat} className="mb-16">
+                {/* Category header skeleton */}
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-full skeleton-shimmer bg-foreground/5" />
+                  <div className="h-7 w-48 rounded skeleton-shimmer bg-foreground/5" />
+                  <div className="ml-auto h-4 w-16 rounded skeleton-shimmer bg-foreground/5" />
+                </div>
+                {/* Cards grid skeleton */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                  {[0,1,2].map((card) => (
+                    <div key={card} className="rounded-lg overflow-hidden">
+                      {/* Image area */}
+                      <div className="relative aspect-[4/3] skeleton-shimmer bg-foreground/5 rounded-lg overflow-hidden">
+                        {/* Bottom content like Instagram */}
+                        <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-2">
+                          <div className="h-3 w-20 rounded skeleton-shimmer bg-foreground/10" />
+                          <div className="h-6 w-36 rounded skeleton-shimmer bg-foreground/10" />
+                        </div>
+                        {/* Top right icon like LinkedIn */}
+                        <div className="absolute top-4 right-4 w-10 h-10 rounded-full skeleton-shimmer bg-foreground/10" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -292,20 +312,17 @@ const Projects = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              viewport={{ once: true, margin: "-100px" }}
-             style={{ willChange: "transform, opacity" }}>
+              viewport={{ once: true, margin: "-100px" }}>
               {/* Category Header */}
               <motion.div 
                 className="flex items-center gap-4 mb-8 cursor-pointer group"
                 onClick={() => setActiveCategory(activeCategory === categoryIndex ? null : categoryIndex)}
                 whileHover={{ x: 10 }}
-                transition={{ duration: 0.3 }}
-               style={{ willChange: "transform, opacity" }}>
+                transition={{ duration: 0.3 }}>
                 <motion.div
                   className="w-12 h-12 rounded-full bg-accent-lime/10 flex items-center justify-center"
                   whileHover={{ scale: 1.1, rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                 style={{ willChange: "transform, opacity" }}>
+                  transition={{ duration: 0.5 }}>
                   <Icon className="w-6 h-6 text-accent-lime" />
                 </motion.div>
                 <h3 className="text-2xl md:text-3xl font-light text-foreground group-hover:text-accent-lime transition-colors">
@@ -314,17 +331,14 @@ const Projects = () => {
                 <motion.div
                   className="ml-auto text-sm text-muted-foreground"
                   animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                 style={{ willChange: "transform, opacity" }}>
+                  transition={{ duration: 2, repeat: Infinity }}>
                   {category.projects.length} projects
                 </motion.div>
               </motion.div>
 
               {/* Projects Grid */}
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-                layout
-               style={{ willChange: "transform, opacity" }}>
+              <div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {category.projects.map((project, index) => (
                   <ProjectCard 
                     key={project.title} 
@@ -332,7 +346,7 @@ const Projects = () => {
                     index={index} 
                   />
                 ))}
-              </motion.div>
+              </div>
 
               {/* Divider */}
               {categoryIndex < projectCategories.length - 1 && (
@@ -341,8 +355,7 @@ const Projects = () => {
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 0.2 }}
-                  viewport={{ once: true }}
-                 style={{ willChange: "transform, opacity" }} />
+                  viewport={{ once: true }}/>
               )}
             </motion.div>
           );

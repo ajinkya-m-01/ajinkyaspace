@@ -14,8 +14,7 @@ const Home = () => {
     <PageTransition>
       <CursorFollower />
       <ScrollLine />
-      <div className="noise-overlay" />
-      <main className="relative cursor-none md:cursor-none">
+      <main className="relative relative">
         <Navigation />
         <Hero />
         <div id="about">

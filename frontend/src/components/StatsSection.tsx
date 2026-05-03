@@ -50,8 +50,7 @@ const Stat = ({ label, value, suffix }: StatProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="text-center md:text-left"
-     style={{ willChange: "transform, opacity" }}>
+      className="text-center md:text-left">
       <p className="text-editorial-xs text-muted-foreground mb-4 md:mb-6">{label}</p>
       <AnimatedNumber value={value} suffix={suffix} />
     </motion.div>
@@ -77,7 +76,7 @@ const StatsSection = () => {
         viewBox="0 0 400 600"
         preserveAspectRatio="none"
         fill="none"
-        style={{ willChange: "transform, opacity", opacity }}
+        style={{ opacity }}
       >
         <motion.path
           d="M400 0 Q 200 200, 300 300 T 100 600"
@@ -85,7 +84,7 @@ const StatsSection = () => {
           strokeWidth="40"
           strokeLinecap="round"
           fill="none"
-          style={{ willChange: "transform, opacity", pathLength: curvePathLength }}
+          style={{ pathLength: curvePathLength }}
         />
       </motion.svg>
       
@@ -97,8 +96,7 @@ const StatsSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-6"
-           style={{ willChange: "transform, opacity" }}>
+            className="space-y-6">
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug italic">
               Driving measurable growth and engagement through thoughtful design and engineering.
             </h3>
@@ -110,8 +108,7 @@ const StatsSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-6"
-           style={{ willChange: "transform, opacity" }}>
+            className="space-y-6">
             <p className="text-editorial-sm text-muted-foreground leading-relaxed">
               Every product I build starts with understanding user goals and translating them into intuitive, high-performance experiences. From concept to launch, I focus on meaningful results—boosting user engagement, retention, and overall business impact.
             </p>
@@ -124,8 +121,7 @@ const StatsSection = () => {
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}
-         style={{ willChange: "transform, opacity" }} />
+          viewport={{ once: true }}/>
         
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-2 gap-8 md:gap-16">

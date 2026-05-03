@@ -33,7 +33,7 @@ const Experience = () => {
       {/* Animated timeline line */}
       <motion.div 
         className="absolute left-6 md:left-1/2 top-32 md:top-48 w-px bg-foreground/20 origin-top"
-        style={{ willChange: "transform, opacity", scaleY: lineScaleY,
+        style={{ scaleY: lineScaleY,
           height: "calc(100% - 16rem)" }}
       />
       
@@ -59,13 +59,11 @@ const Experience = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className="group"
-               style={{ willChange: "transform, opacity" }}>
+                className="group">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 md:gap-8 mb-4">
                   <div>
                     <motion.h3 
-                      className="text-xl md:text-2xl font-light group-hover:tracking-wide transition-all duration-500"
-                     style={{ willChange: "transform, opacity" }}>
+                      className="text-xl md:text-2xl font-light group-hover:tracking-wide transition-all duration-500">
                       {exp.role}
                     </motion.h3>
                     <p className="text-editorial-sm text-muted-foreground">
@@ -86,8 +84,7 @@ const Experience = () => {
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 0.5 }}
-                  viewport={{ once: true }}
-                 style={{ willChange: "transform, opacity" }} />
+                  viewport={{ once: true }}/>
               </motion.article>
             </HorizontalWipe>
           ))}

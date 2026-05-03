@@ -44,7 +44,7 @@ const MagneticButton = ({
     <motion.div
       ref={ref}
       className={className}
-      style={{ willChange: "transform, opacity", x: smoothX, y: smoothY }}
+      style={{ x: smoothX, y: smoothY }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >

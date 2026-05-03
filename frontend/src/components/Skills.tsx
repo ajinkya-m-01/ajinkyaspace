@@ -25,11 +25,11 @@ const Skills = () => {
       {/* Decorative line */}
       <motion.div 
         className="absolute left-0 top-0 w-px h-full bg-foreground/10"
-        style={{ willChange: "transform, opacity", scaleY: scrollYProgress }}
+        style={{ scaleY: scrollYProgress }}
         initial={{ originY: 0 }}
       />
       
-      <motion.div className="max-w-4xl mx-auto" style={{ willChange: "transform, opacity", y }}>
+      <motion.div className="max-w-4xl mx-auto" style={{ y }}>
         <SectionTransition variant="slide-up">
           <p className="text-editorial-xs text-muted-foreground mb-6">
             Expertise
@@ -50,8 +50,7 @@ const Skills = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: groupIndex * 0.1 }}
-                viewport={{ once: true }}
-               style={{ willChange: "transform, opacity" }}>
+                viewport={{ once: true }}>
                 <h3 className="text-editorial-xs text-foreground mb-6">
                   {skillGroup.category}
                 </h3>

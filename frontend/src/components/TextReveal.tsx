@@ -25,7 +25,7 @@ const TextReveal = ({
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
       <motion.div
-        style={{ willChange: "transform, opacity", opacity, y }}
+        style={{ opacity, y }}
       >
         <Component className={className}>
           {children}

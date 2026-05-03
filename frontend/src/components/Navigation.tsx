@@ -38,9 +38,9 @@ const Navigation = () => {
 
   const navItems = [
     { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
     { label: "Works", path: "/works" },
     { label: "Services", path: "/services" },
+    { label: "About", path: "/about" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -92,8 +92,7 @@ const Navigation = () => {
         }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: isLoaded ? 0 : -100, opacity: isLoaded ? 1 : 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
-       style={{ willChange: "transform, opacity" }}>
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}>
         <nav className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="flex items-center justify-between h-20 md:h-24">
             
@@ -105,8 +104,7 @@ const Navigation = () => {
               animate={isLoaded ? "visible" : "hidden"}
               whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => handleNavClick("/")}
-             style={{ willChange: "transform, opacity" }}>
+              onClick={() => handleNavClick("/")}>
               <img 
                 src={logoImage} 
                 alt="Ajinkya Mehetre" 
@@ -121,8 +119,7 @@ const Navigation = () => {
               className="hidden md:flex items-center gap-1 lg:gap-2"
               variants={containerVariants}
               initial="hidden"
-              animate={isLoaded ? "visible" : "hidden"}
-             style={{ willChange: "transform, opacity" }}>
+              animate={isLoaded ? "visible" : "hidden"}>
               {navItems.map((item) => (
                 <motion.button
                   key={item.path}
@@ -133,16 +130,14 @@ const Navigation = () => {
                       : "text-foreground/80 hover:text-foreground"
                   }`}
                   variants={itemVariants}
-                  whileHover={{ y: -2, transition: { duration: 0.2 } }}
-                 style={{ willChange: "transform, opacity" }}>
+                  whileHover={{ y: -2, transition: { duration: 0.2 } }}>
                   {item.label}
                   <motion.span
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-accent-lime"
                     initial={{ width: isActive(item.path) ? "75%" : "0%" }}
                     animate={{ width: isActive(item.path) ? "75%" : "0%" }}
                     whileHover={{ width: "75%" }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                   style={{ willChange: "transform, opacity" }} />
+                    transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}/>
                 </motion.button>
               ))}
               
@@ -152,8 +147,7 @@ const Navigation = () => {
                 className="ml-2 lg:ml-4 px-5 lg:px-7 py-2.5 lg:py-3 bg-foreground text-background text-sm lg:text-base font-semibold rounded-full hover:bg-accent-lime hover:text-foreground transition-all duration-500 shadow-lg hover:shadow-xl"
                 variants={itemVariants}
                 whileHover={{ y: -2, scale: 1.05, transition: { duration: 0.3 } }}
-                whileTap={{ scale: 0.95 }}
-               style={{ willChange: "transform, opacity" }}>
+                whileTap={{ scale: 0.95 }}>
                 Contact →
               </motion.button>
             </motion.div>
@@ -166,8 +160,7 @@ const Navigation = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0.8 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              whileTap={{ scale: 0.9 }}
-             style={{ willChange: "transform, opacity" }}>
+              whileTap={{ scale: 0.9 }}>
               <AnimatePresence mode="wait">
                 {isMenuOpen ? (
                   <motion.div
@@ -175,8 +168,7 @@ const Navigation = () => {
                     initial={{ opacity: 0, rotate: -90 }}
                     animate={{ opacity: 1, rotate: 0 }}
                     exit={{ opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
-                   style={{ willChange: "transform, opacity" }}>
+                    transition={{ duration: 0.2 }}>
                     <X className="w-6 h-6" />
                   </motion.div>
                 ) : (
@@ -185,8 +177,7 @@ const Navigation = () => {
                     initial={{ opacity: 0, rotate: 90 }}
                     animate={{ opacity: 1, rotate: 0 }}
                     exit={{ opacity: 0, rotate: -90 }}
-                    transition={{ duration: 0.2 }}
-                   style={{ willChange: "transform, opacity" }}>
+                    transition={{ duration: 0.2 }}>
                     <Menu className="w-6 h-6" />
                   </motion.div>
                 )}
@@ -204,8 +195,7 @@ const Navigation = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-           style={{ willChange: "transform, opacity" }}>
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}>
             <motion.div 
               className="flex flex-col items-center justify-center h-full gap-8 px-8"
               initial="hidden"
@@ -217,8 +207,7 @@ const Navigation = () => {
                   opacity: 1,
                   transition: { staggerChildren: 0.1, delayChildren: 0.1 },
                 },
-              }}
-             style={{ willChange: "transform, opacity" }}>
+              }}>
               {navItems.map((item) => (
                 <motion.button
                   key={item.path}
@@ -236,8 +225,7 @@ const Navigation = () => {
                       transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
                     },
                   }}
-                  whileHover={{ x: 10, transition: { duration: 0.2 } }}
-                 style={{ willChange: "transform, opacity" }}>
+                  whileHover={{ x: 10, transition: { duration: 0.2 } }}>
                   {item.label}
                 </motion.button>
               ))}
@@ -254,8 +242,7 @@ const Navigation = () => {
                   },
                 }}
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-               style={{ willChange: "transform, opacity" }}>
+                whileTap={{ scale: 0.95 }}>
                 Contact →
               </motion.button>
             </motion.div>

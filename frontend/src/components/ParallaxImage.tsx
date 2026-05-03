@@ -64,13 +64,13 @@ const ParallaxImage = ({
     <motion.div
       ref={ref}
       className={`relative overflow-hidden ${className}`}
-      style={{ willChange: "transform, opacity", perspective: 1000, }}
+      style={{ perspective: 1000, }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
-        style={{ willChange: "transform, opacity", y: smoothY,
+        style={{ y: smoothY,
           scale: smoothScale,
           rotateX: smoothRotateX,
           rotateY: smoothRotateY,
@@ -81,8 +81,7 @@ const ParallaxImage = ({
           src={src}
           alt={alt}
           className="w-full h-full object-cover grayscale"
-          transition={{ duration: 0.4 }}
-         style={{ willChange: "transform, opacity" }} />
+          transition={{ duration: 0.4 }}/>
       </motion.div>
       
       {/* Subtle depth shadow on hover */}
@@ -93,8 +92,7 @@ const ParallaxImage = ({
             ? "inset 0 0 60px rgba(0,0,0,0.15)" 
             : "inset 0 0 0px rgba(0,0,0,0)",
         }}
-        transition={{ duration: 0.4 }}
-       style={{ willChange: "transform, opacity" }} />
+        transition={{ duration: 0.4 }}/>
     </motion.div>
   );
 };

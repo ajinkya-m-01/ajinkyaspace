@@ -15,23 +15,20 @@ const SocialSidebar = () => {
       className="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4 md:gap-6"
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 1.5 }}
-     style={{ willChange: "transform, opacity" }}>
+      transition={{ duration: 0.8, delay: 1.5 }}>
       {/* Vertical line */}
       <motion.div
         className="w-px h-16 bg-foreground/20 mx-auto mb-4"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
-        transition={{ duration: 1, delay: 1.8 }}
-       style={{ willChange: "transform, opacity" }} />
+        transition={{ duration: 1, delay: 1.8 }}/>
       
       {socialLinks.map((social, index) => (
         <MagneticButton key={social.label} strength={0.5}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 2 + index * 0.1 }}
-           style={{ willChange: "transform, opacity" }}>
+            transition={{ duration: 0.5, delay: 2 + index * 0.1 }}>
             <SocialLinkPreview
               href={social.href}
               label={social.label}
@@ -49,8 +46,7 @@ const SocialSidebar = () => {
         className="w-px h-16 bg-foreground/20 mx-auto mt-4"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
-        transition={{ duration: 1, delay: 2.2 }}
-       style={{ willChange: "transform, opacity" }} />
+        transition={{ duration: 1, delay: 2.2 }}/>
     </motion.div>
   );
 };

@@ -48,13 +48,11 @@ const ServiceItem = ({ service, index }: ServiceItemProps) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-     style={{ willChange: "transform, opacity" }}>
+      onMouseLeave={() => setIsHovered(false)}>
       <motion.div
         className="relative py-8 md:py-10 border-t border-foreground/10 group cursor-pointer overflow-hidden"
         whileHover={{ x: 10 }}
-        transition={{ duration: 0.3 }}
-       style={{ willChange: "transform, opacity" }}>
+        transition={{ duration: 0.3 }}>
         {/* Service Name */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-foreground group-hover:text-accent-lime transition-colors duration-300 relative z-10">
           {service.name}
@@ -69,7 +67,7 @@ const ServiceItem = ({ service, index }: ServiceItemProps) => {
             opacity: isHovered ? 1 : 0
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          style={{ willChange: "transform, opacity", originY: 0 }}
+          style={{ originY: 0 }}
         />
 
         {/* Rotating Text Strip */}
@@ -80,8 +78,7 @@ const ServiceItem = ({ service, index }: ServiceItemProps) => {
             opacity: isHovered ? 1 : 0,
             x: isHovered ? 0 : 20
           }}
-          transition={{ duration: 0.4 }}
-         style={{ willChange: "transform, opacity" }}>
+          transition={{ duration: 0.4 }}>
           <motion.div
             className="flex flex-col gap-4 py-4"
             animate={isHovered ? {
@@ -93,8 +90,7 @@ const ServiceItem = ({ service, index }: ServiceItemProps) => {
               duration: 8,
               repeat: Infinity,
               ease: "linear"
-            }}
-           style={{ willChange: "transform, opacity" }}>
+            }}>
             {/* Duplicate tags for seamless loop */}
             {[...service.tags, ...service.tags, ...service.tags].map((tag, idx) => (
               <div
@@ -116,8 +112,7 @@ const Services = () => {
     <PageTransition>
       <CursorFollower />
       <ScrollLine />
-      <div className="noise-overlay" />
-      <main className="relative cursor-none md:cursor-none bg-background min-h-screen">
+      <main className="relative relative bg-background min-h-screen">
         <Navigation />
         
         {/* Hero Section */}
@@ -127,8 +122,7 @@ const Services = () => {
               className="text-xs md:text-sm uppercase tracking-wider text-accent-lime mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-             style={{ willChange: "transform, opacity" }}>
+              transition={{ duration: 0.6, delay: 0.2 }}>
               What I Offer
             </motion.p>
 
@@ -136,8 +130,7 @@ const Services = () => {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-tight mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-             style={{ willChange: "transform, opacity" }}>
+              transition={{ duration: 0.8, delay: 0.3 }}>
               Services
             </motion.h1>
 
@@ -145,8 +138,7 @@ const Services = () => {
               className="text-base md:text-lg text-foreground/70 max-w-2xl mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-             style={{ willChange: "transform, opacity" }}>
+              transition={{ duration: 0.8, delay: 0.5 }}>
               Professional web development, mobile apps, and custom solutions for your business.
               Available for freelancing and contract-based projects.
             </motion.p>
@@ -173,8 +165,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-             style={{ willChange: "transform, opacity" }}>
+              transition={{ duration: 0.8 }}>
               Ready to start your project?
             </motion.h2>
             
@@ -183,8 +174,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-             style={{ willChange: "transform, opacity" }}>
+              transition={{ duration: 0.8, delay: 0.2 }}>
               Let's discuss your requirements and build something amazing together.
             </motion.p>
 
@@ -193,8 +183,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-             style={{ willChange: "transform, opacity" }}>
+              transition={{ duration: 0.8, delay: 0.4 }}>
               <a
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-foreground text-background text-base font-semibold hover:bg-accent-lime hover:text-foreground transition-all duration-300"

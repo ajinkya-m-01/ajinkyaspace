@@ -16,13 +16,12 @@ const CircularMenu = () => {
       className="hidden lg:block fixed top-6 right-6 z-50"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay: 1 }}
-     style={{ willChange: "transform, opacity" }}>
+      transition={{ duration: 0.5, delay: 1 }}>
       {/* Main button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="relative w-14 h-14 rounded-full glass flex items-center justify-center transition-all duration-300 hover:scale-105"
-        style={{ willChange: "transform, opacity", boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4)", }}
+        style={{ boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4)", }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -33,8 +32,7 @@ const CircularMenu = () => {
               initial={{ rotate: -90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-             style={{ willChange: "transform, opacity" }}>
+              transition={{ duration: 0.2 }}>
               <X className="w-5 h-5 text-foreground" />
             </motion.div>
           ) : (
@@ -43,8 +41,7 @@ const CircularMenu = () => {
               initial={{ rotate: 90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-             style={{ willChange: "transform, opacity" }}>
+              transition={{ duration: 0.2 }}>
               <Menu className="w-5 h-5 text-foreground" />
             </motion.div>
           )}
@@ -59,8 +56,7 @@ const CircularMenu = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-           style={{ willChange: "transform, opacity" }}>
+            transition={{ duration: 0.3 }}>
             {socialLinks.map((social, index) => (
               <motion.a
                 key={social.label}
@@ -80,7 +76,7 @@ const CircularMenu = () => {
                   transition: { delay: (socialLinks.length - index - 1) * 0.05 }
                 }}
                 whileHover={{ scale: 1.1 }}
-                style={{ willChange: "transform, opacity", boxShadow: "0 4px 16px rgba(0, 0, 0, 0.3)", }}
+                style={{ boxShadow: "0 4px 16px rgba(0, 0, 0, 0.3)", }}
                 aria-label={social.label}
                 title={social.tooltip}
               >

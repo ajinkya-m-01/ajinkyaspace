@@ -32,7 +32,7 @@ const ScrollLine = () => {
           strokeWidth="0.5"
           strokeLinecap="round"
           fill="none"
-          style={{ willChange: "transform, opacity", pathLength,
+          style={{ pathLength,
             opacity: pathOpacity, }}
         />
         
@@ -41,7 +41,7 @@ const ScrollLine = () => {
           cx="15"
           r="3"
           fill="hsl(var(--foreground))"
-          style={{ willChange: "transform, opacity", opacity: circleOpacity, }}
+          style={{ opacity: circleOpacity, }}
           cy={circleY}
         />
       </svg>
